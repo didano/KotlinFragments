@@ -1,20 +1,25 @@
 package kernycnhyi.vlad.kotlinfrags
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import kernycnhyi.vlad.kotlinfrags.base.BasicActivity
+import kernycnhyi.vlad.kotlinfrags.interfaces.NavigationInterface
+import kernycnhyi.vlad.kotlinfrags.interfaces.UpdateToolbarTitle
 
-class MainActivity : AppCompatActivity(), UpdateToolbarTitle, NavigationInterface {
-
-    lateinit var router: Router
+class MainActivity : BasicActivity(), UpdateToolbarTitle,
+    NavigationInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        router = Router(supportFragmentManager, R.id.fragment_container)
+        openFirstFragment()
     }
 
     override fun updateTitle(str: String) {
         supportActionBar?.title = str
+    }
+
+    override fun openFirstFragment() {
+        router.openFirstFrag(true)
     }
 
     override fun openThirdFragment() {

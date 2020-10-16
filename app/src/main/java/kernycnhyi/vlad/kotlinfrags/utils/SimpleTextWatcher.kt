@@ -1,12 +1,12 @@
-package kernycnhyi.vlad.kotlinfrags
+package kernycnhyi.vlad.kotlinfrags.utils
 
 import android.text.Editable
 import android.text.TextWatcher
 
-class SimpleTextWatcher(val changeText: (CharSequence) -> Unit) : TextWatcher {
+class SimpleTextWatcher(val changeText: (CharSequence?) -> Unit) : TextWatcher {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        changeText(s.toString())
+        changeText(s)
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
