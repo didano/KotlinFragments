@@ -1,36 +1,34 @@
 package kernycnhyi.vlad.kotlinfrags
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
 class Router(private val fragmentManager: FragmentManager, private val containerId: Int) {
 
-    fun initFirstFrag() {
+    init {
+        initFirstFrag()
+    }
+
+    private fun initFirstFrag() {
         fragmentManager.beginTransaction().add(containerId, FirstFragment()).commit()
     }
 
-    fun firstNextSecond() {
-        fragmentManager.beginTransaction().replace(containerId, SecondFragment())
-            .addToBackStack(null)
-            .commit()
+    fun openSecondFrag(addToBackStack: Boolean = true) {
+        openFragment(SecondFragment(), addToBackStack)
     }
 
-    fun secondNextThird() {
-
-        fragmentManager.beginTransaction().replace(containerId, ThirdFragment())
-            .addToBackStack(null)
-            .commit()
+    fun openThirdFrag(addToBackStack: Boolean = true) {
+        openFragment(ThirdFragment(), addToBackStack)
     }
 
-    fun secondBackFirst() {
-        fragmentManager.popBackStack()
+    fun openFragment(fragment: Fragment, addToBackStack: Boolean) {
+        if (addToBackStack) {
+            fragmentManager.beginTransaction().replace(containerId, fragment)
+                .addToBackStack(null)
+                .commit()
+        } else {
+            fragmentManager.beginTransaction().replace(containerId, fragment)
+                .commit()
+        }
     }
-
-    fun thirdBackSecond() {
-        fragmentManager.popBackStack()
-    }
-
-    companion object {
-        const val containerId = R.id.fragment_container
-    }
-
 }
