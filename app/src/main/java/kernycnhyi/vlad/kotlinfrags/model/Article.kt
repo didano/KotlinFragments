@@ -4,42 +4,42 @@ import kernycnhyi.vlad.kotlinfrags.R
 
 object ArticleContent {
 
-    val articleItems = mutableListOf<Article>()
+    val articleItems = mutableListOf<Any>()
 
     init {
-        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo, true))
+        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo))
         addItem(
-            Article(
+            Issue(
                 "Secondary Header",
                 "Secondary Description",
                 R.drawable.secondary_news_logo
             )
         )
         addItem(
-            Article(
+            Issue(
                 "Secondary Header",
                 "Secondary Description",
                 R.drawable.secondary_news_logo
             )
         )
-        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo, true))
+        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo))
         addItem(
-            Article(
+            Issue(
                 "Secondary Header",
                 "Secondary Description",
                 R.drawable.secondary_news_logo
             )
         )
         addItem(
-            Article(
+            Issue(
                 "Secondary Header",
                 "Secondary Description",
                 R.drawable.secondary_news_logo
             )
         )
-        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo, true))
+        addItem(Article("Main Header", "Main Description", R.drawable.main_news_logo))
         addItem(
-            Article(
+            Issue(
                 "Secondary Header",
                 "Secondary Description",
                 R.drawable.secondary_news_logo
@@ -47,14 +47,19 @@ object ArticleContent {
         )
     }
 
-    private fun addItem(article: Article) {
+    private fun addItem(article: Any) {
         articleItems.add(article)
     }
 
     data class Article(
         val header: String,
         val description: String,
-        val image: Int,
-        val priority: Boolean = false
+        val image: Int
+    )
+
+    data class Issue(
+        val header: String,
+        val description: String,
+        val image: Int
     )
 }

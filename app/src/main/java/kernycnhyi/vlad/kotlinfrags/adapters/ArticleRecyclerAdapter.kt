@@ -8,15 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
+import kotlinx.android.synthetic.main.list_item_main.view.*
+import kotlinx.android.synthetic.main.list_item_secondary.view.*
 
-class ArticleRecyclerAdapter(private val articleList: List<ArticleContent.Article>) :
+class ArticleRecyclerAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private lateinit var articleList: List<Any>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view: View
-        if (viewType == 0) {
+        if (viewType == VIEW_TYPE_ONE) {
             view = layoutInflater.inflate(R.layout.list_item_main, parent, false)
             return ViewHolderOne(view)
         }
@@ -27,35 +30,55 @@ class ArticleRecyclerAdapter(private val articleList: List<ArticleContent.Articl
     override fun getItemCount(): Int = articleList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (articleList[position].priority) {
+        if (articleList[position] is ArticleContent.Article) {
             val viewHolderOne = holder as ViewHolderOne
-            viewHolderOne.itemMainHeaderText.text = articleList[position].header
-            viewHolderOne.itemMainDescText.text = articleList[position].description
-            viewHolderOne.itemMainImageView.setImageResource(articleList[position].image)
+            val articleElement = articleList[position]
+            articleElement as ArticleContent.Article
+            viewHolderOne.apply {
+                itemMainHeaderText.text = articleElement.header
+                itemMainDescText.text = articleElement.description
+                itemMainImageView.setImageResource(articleElement.image)
+            }
         } else {
+            val issueElement = articleList[position]
+            issueElement as ArticleContent.Issue
             val viewHolderTwo = holder as ViewHolderTwo
-            viewHolderTwo.itemSecHeaderText.text = articleList[position].header
-            viewHolderTwo.itemSecDescText.text = articleList[position].description
-            viewHolderTwo.itemSecImageView.setImageResource(articleList[position].image)
+            viewHolderTwo.apply {
+                itemSecHeaderText.text = issueElement.header
+                itemSecDescText.text = issueElement.description
+                itemSecImageView.setImageResource(issueElement.image)
+            }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (articleList[position].priority) {
-            return 0
+        if (articleList[position] is ArticleContent.Article) {
+            return VIEW_TYPE_ONE
         }
-        return 1
+        return VIEW_TYPE_TWO
     }
 
+    fun refreshAdapter(list: List<Any>): ArticleRecyclerAdapter {
+        articleList = list
+        this.notifyDataSetChanged()
+        return this
+    }
+
+
     inner class ViewHolderOne(view: View) : RecyclerView.ViewHolder(view) {
-        val itemMainHeaderText: TextView = view.findViewById(R.id.itemMainHeaderTextView)
-        val itemMainDescText: TextView = view.findViewById(R.id.itemMainDescTextView)
-        val itemMainImageView: ImageView = view.findViewById(R.id.itemMainImageView)
+        val itemMainHeaderText: TextView = view.itemMainHeaderTextView
+        val itemMainDescText: TextView = view.itemMainDescTextView
+        val itemMainImageView: ImageView = view.itemMainImageView
     }
 
     inner class ViewHolderTwo(view: View) : RecyclerView.ViewHolder(view) {
-        val itemSecHeaderText: TextView = view.findViewById(R.id.itemSecHeaderTextView)
-        val itemSecDescText: TextView = view.findViewById(R.id.itemSecDescTextView)
-        val itemSecImageView: ImageView = view.findViewById(R.id.itemSecImageView)
+        val itemSecHeaderText: TextView = view.itemSecHeaderTextView
+        val itemSecDescText: TextView = view.itemSecDescTextView
+        val itemSecImageView: ImageView = view.itemSecImageView
+    }
+
+    companion object {
+        const val VIEW_TYPE_ONE = 0
+        const val VIEW_TYPE_TWO = 1
     }
 }
