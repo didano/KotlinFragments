@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.adapters.ArticleRecyclerAdapter
 import kernycnhyi.vlad.kotlinfrags.interfaces.NavigationInterface
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment : Fragment() {
 
-    private val recyclerAdapter: ArticleRecyclerAdapter by lazy {
+    private val recyclerAdapter by lazy {
         ArticleRecyclerAdapter()
     }
 
@@ -33,11 +32,10 @@ class SecondFragment : Fragment() {
         secBackBtn.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-        val recyclerView = activity?.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView?.apply {
-            adapter = recyclerAdapter.refreshAdapter(ArticleContent.articleItems)
-            setHasFixedSize(true)
+        recyclerView.apply {
+            adapter = recyclerAdapter
             layoutManager = LinearLayoutManager(context)
         }
+        recyclerAdapter.newList(ArticleContent.articleItems)
     }
 }

@@ -9,4 +9,6 @@
     <string name="next">Next</string>
     <string name="hello_second_fragment">Hello from second fragment</string>
     <string name="hello_third_fragment">Hello from third fragment</string>
+    <string name="mock_description_text">DESCRIPTION</string>
+    <string name="mock_header_text">Article Header</string>
 </resources>

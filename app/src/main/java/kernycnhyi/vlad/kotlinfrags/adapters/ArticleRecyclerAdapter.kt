@@ -8,62 +8,63 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
+import kernycnhyi.vlad.kotlinfrags.model.BaseArticleModel
 import kotlinx.android.synthetic.main.list_item_main.view.*
 import kotlinx.android.synthetic.main.list_item_secondary.view.*
 
 class ArticleRecyclerAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private lateinit var articleList: List<Any>
+    private lateinit var articleList: List<BaseArticleModel>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view: View
-        if (viewType == VIEW_TYPE_ONE) {
-            view = layoutInflater.inflate(R.layout.list_item_main, parent, false)
-            return ViewHolderOne(view)
+        return when (viewType) {
+            ArticleContent.VIEWTYPE_MAIN -> {
+                val view = layoutInflater.inflate(R.layout.list_item_main, parent, false)
+                ViewHolderOne(view)
+            }
+            else -> {
+                val view = layoutInflater.inflate(R.layout.list_item_secondary, parent, false)
+                ViewHolderTwo(view)
+            }
         }
-        view = layoutInflater.inflate(R.layout.list_item_secondary, parent, false)
-        return ViewHolderTwo(view)
     }
 
     override fun getItemCount(): Int = articleList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (articleList[position] is ArticleContent.Article) {
-            val viewHolderOne = holder as ViewHolderOne
-            val articleElement = articleList[position]
-            articleElement as ArticleContent.Article
-            viewHolderOne.apply {
-                itemMainHeaderText.text = articleElement.header
-                itemMainDescText.text = articleElement.description
-                itemMainImageView.setImageResource(articleElement.image)
+        when (articleList[position].type) {
+            ArticleContent.VIEWTYPE_MAIN -> {
+                val articleElement = articleList[position] as ArticleContent.Article
+                (holder as ViewHolderOne).apply {
+                    itemMainHeaderText.text = articleElement.header
+                    itemMainDescText.text = articleElement.description
+                    itemMainImageView.setImageResource(articleElement.image)
+                }
             }
-        } else {
-            val issueElement = articleList[position]
-            issueElement as ArticleContent.Issue
-            val viewHolderTwo = holder as ViewHolderTwo
-            viewHolderTwo.apply {
-                itemSecHeaderText.text = issueElement.header
-                itemSecDescText.text = issueElement.description
-                itemSecImageView.setImageResource(issueElement.image)
+            ArticleContent.VIEWTYPE_SECONDARY -> {
+                val issueElement = articleList[position] as ArticleContent.Issue
+                (holder as ViewHolderTwo).apply {
+                    itemSecHeaderText.text = issueElement.header
+                    itemSecDescText.text = issueElement.description
+                    itemSecImageView.setImageResource(issueElement.image)
+                }
             }
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        if (articleList[position] is ArticleContent.Article) {
-            return VIEW_TYPE_ONE
-        }
-        return VIEW_TYPE_TWO
-    }
 
-    fun refreshAdapter(list: List<Any>): ArticleRecyclerAdapter {
+    override fun getItemViewType(position: Int): Int =
+        when (articleList[position].type) {
+            ArticleContent.VIEWTYPE_MAIN -> ArticleContent.VIEWTYPE_MAIN
+            else -> ArticleContent.VIEWTYPE_SECONDARY
+        }
+
+    fun newList(list: List<BaseArticleModel>) {
         articleList = list
         this.notifyDataSetChanged()
-        return this
     }
-
 
     inner class ViewHolderOne(view: View) : RecyclerView.ViewHolder(view) {
         val itemMainHeaderText: TextView = view.itemMainHeaderTextView
@@ -75,10 +76,5 @@ class ArticleRecyclerAdapter() :
         val itemSecHeaderText: TextView = view.itemSecHeaderTextView
         val itemSecDescText: TextView = view.itemSecDescTextView
         val itemSecImageView: ImageView = view.itemSecImageView
-    }
-
-    companion object {
-        const val VIEW_TYPE_ONE = 0
-        const val VIEW_TYPE_TWO = 1
     }
 }
