@@ -19,15 +19,12 @@ class ArticleRecyclerAdapter() :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view:View
         return when (viewType) {
             ArticleContent.VIEWTYPE_MAIN -> {
-                view = layoutInflater.inflate(R.layout.list_item_main, parent, false)
-                ViewHolderOne(view)
+                ViewHolderOne(layoutInflater.inflate(R.layout.list_item_main, parent, false))
             }
             else -> {
-                view = layoutInflater.inflate(R.layout.list_item_secondary, parent, false)
-                ViewHolderTwo(view)
+                ViewHolderTwo(layoutInflater.inflate(R.layout.list_item_secondary, parent, false))
             }
         }
     }
