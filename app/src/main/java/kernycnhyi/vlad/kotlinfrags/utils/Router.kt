@@ -8,11 +8,6 @@ import kernycnhyi.vlad.kotlinfrags.fragments.ThirdFragment
 
 class Router(private val fragmentManager: FragmentManager, private val containerId: Int) {
 
-    fun initFirstFrag() {
-        fragmentManager.beginTransaction().add(containerId,
-            FirstFragment()
-        ).commit()
-    }
 
     fun openFirstFrag(addToBackStack: Boolean = true) {
         openFragment(FirstFragment(), addToBackStack)
