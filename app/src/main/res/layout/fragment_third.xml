@@ -10,13 +10,37 @@
         android:id="@+id/thirdFragTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/big_top_margin"
-        android:text="@string/hello_third_fragment"
+        android:textSize="@dimen/basic_header_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="@dimen/basic_header_text_size"/>
+        app:layout_constraintVertical_bias="0.1"
+        tools:text="@string/hello_third_fragment" />
+
+    <TextView
+        android:id="@+id/thirdFragDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:textSize="@dimen/dialog_header_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/thirdBtnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/hello_third_fragment" />
+
+    <ImageView
+        android:id="@+id/newsLogoIV"
+        android:layout_width="@dimen/basic_image_side"
+        android:layout_height="@dimen/basic_image_side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/small_general_big_margin"
+        tools:src="@drawable/main_news_logo"
+        app:layout_constraintTop_toBottomOf="@+id/thirdFragDescription" />
 
     <Button
         android:id="@+id/thirdBtnBack"

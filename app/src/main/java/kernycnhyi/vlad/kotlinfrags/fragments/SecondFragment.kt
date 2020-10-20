@@ -16,7 +16,14 @@ import kotlinx.android.synthetic.main.fragment_second.*
 class SecondFragment : Fragment() {
 
     private val recyclerAdapter by lazy {
-        ArticleRecyclerAdapter()
+        ArticleRecyclerAdapter{
+            if(it is ArticleContent.Article){
+                createDialogForArticle(it)
+            } else if (it is ArticleContent.Issue){
+                (activity as? NavigationInterface)?.openThirdFragment(it)
+            }
+
+        }
     }
 
     override fun onCreateView(
@@ -27,7 +34,7 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         secNextBtn.setOnClickListener {
-            (activity as? NavigationInterface)?.openThirdFragment()
+            (activity as? NavigationInterface)?.openThirdFragment(null)
         }
         secBackBtn.setOnClickListener {
             fragmentManager?.popBackStack()
@@ -37,5 +44,14 @@ class SecondFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
         recyclerAdapter.newList(ArticleContent.articleItems)
+    }
+
+    private fun createDialogForArticle(article:ArticleContent.Article){
+        DialogOne
+            .setTitle(article.header)
+            .setDescription(article.description)
+            .setOnClickListener(null)
+            .build()
+            .show(fragmentManager!!,"sss")
     }
 }

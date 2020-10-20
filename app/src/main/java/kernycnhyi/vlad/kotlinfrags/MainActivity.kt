@@ -4,6 +4,7 @@ import android.os.Bundle
 import kernycnhyi.vlad.kotlinfrags.base.BasicActivity
 import kernycnhyi.vlad.kotlinfrags.interfaces.NavigationInterface
 import kernycnhyi.vlad.kotlinfrags.interfaces.UpdateToolbarTitle
+import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
 
 class MainActivity : BasicActivity(), UpdateToolbarTitle,
     NavigationInterface {
@@ -22,8 +23,8 @@ class MainActivity : BasicActivity(), UpdateToolbarTitle,
         router.openFirstFrag(true)
     }
 
-    override fun openThirdFragment() {
-        router.openThirdFrag(true)
+    override fun openThirdFragment(issue: ArticleContent.Issue?) {
+        router.openThirdFrag(true, issue)
     }
 
     override fun openSecondFragment() {
