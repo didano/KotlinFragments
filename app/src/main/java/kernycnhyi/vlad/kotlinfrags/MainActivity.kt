@@ -23,8 +23,8 @@ class MainActivity : BasicActivity(), UpdateToolbarTitle,
         router.openFirstFrag(true)
     }
 
-    override fun openThirdFragment(issue: ArticleContent.Issue?) {
-        router.openThirdFrag(true, issue)
+    override fun openThirdFragment(issue: ArticleContent.Issue) {
+        router.openThirdFrag(issue, true)
     }
 
     override fun openSecondFragment() {

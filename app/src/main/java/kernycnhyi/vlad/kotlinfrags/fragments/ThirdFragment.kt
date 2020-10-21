@@ -21,26 +21,25 @@ class ThirdFragment private constructor() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         thirdBtnBack.setOnClickListener { fragmentManager?.popBackStack() }
         arguments?.let {
-            thirdFragTV.text = arguments?.getString(ArticleContent.HEADER_KEY)
-            thirdFragDescription.text = arguments?.getString(ArticleContent.DESCRIPTION_KEY)
-            newsLogoIV.setImageResource(arguments!!.getInt(ArticleContent.IMAGE_ID_KEY))
+            thirdFragTV.text = arguments?.getString(HEADER_KEY)
+            thirdFragDescription.text = arguments?.getString(DESCRIPTION_KEY)
+            newsLogoIV.setImageResource(arguments!!.getInt(IMAGE_ID_KEY))
         }
     }
 
     companion object {
+        private const val HEADER_KEY = "headerKey"
+        private const val DESCRIPTION_KEY = "descriptionKey"
+        private const val IMAGE_ID_KEY = "imgIdKey"
+
         fun newInstance(
-            issue: ArticleContent.Issue?
-        ): Fragment {
-            val fragment = ThirdFragment()
-            issue?.let {
-                val args = Bundle()
-                args.putString(ArticleContent.HEADER_KEY, issue.header)
-                args.putString(ArticleContent.DESCRIPTION_KEY, issue.description)
-                args.putInt(ArticleContent.IMAGE_ID_KEY, issue.image)
-                fragment.arguments = args
-                return fragment
+            issue: ArticleContent.Issue
+        ): Fragment = ThirdFragment().apply {
+            this.arguments = Bundle().apply {
+                putString(HEADER_KEY, issue.header)
+                putString(DESCRIPTION_KEY, issue.description)
+                putInt(IMAGE_ID_KEY, issue.image)
             }
-            return fragment
         }
     }
 }

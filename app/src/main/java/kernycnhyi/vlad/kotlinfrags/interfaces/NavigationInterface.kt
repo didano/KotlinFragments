@@ -5,5 +5,5 @@ import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
 interface NavigationInterface {
     fun openFirstFragment()
     fun openSecondFragment()
-    fun openThirdFragment(issue: ArticleContent.Issue?)
+    fun openThirdFragment(issue: ArticleContent.Issue)
 }

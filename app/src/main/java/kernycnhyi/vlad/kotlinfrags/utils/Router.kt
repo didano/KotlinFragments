@@ -18,12 +18,8 @@ class Router(private val fragmentManager: FragmentManager, private val container
         openFragment(SecondFragment(), addToBackStack)
     }
 
-    fun openThirdFrag(addToBackStack: Boolean = true, issue: ArticleContent.Issue?) {
-        if(issue==null){
-            openFragment(ThirdFragment.newInstance(null),addToBackStack)
-        } else {
+    fun openThirdFrag(issue: ArticleContent.Issue, addToBackStack: Boolean = true) {
             openFragment(ThirdFragment.newInstance(issue), addToBackStack)
-        }
     }
 
     private fun openFragment(fragment: Fragment, addToBackStack: Boolean) {

@@ -8,9 +8,7 @@ object ArticleContent {
     const val MOCK_HEADER = "HEADER"
     const val VIEWTYPE_MAIN = 10
     const val VIEWTYPE_SECONDARY = 11
-    const val HEADER_KEY = "headerKey"
-    const val DESCRIPTION_KEY = "descriptionKey"
-    const val IMAGE_ID_KEY = "imgIdKey"
+
     val articleItems = mutableListOf<BaseArticleModel>()
 
     init {
