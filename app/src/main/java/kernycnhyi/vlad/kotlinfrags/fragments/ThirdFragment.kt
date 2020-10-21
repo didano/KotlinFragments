@@ -34,7 +34,7 @@ class ThirdFragment private constructor() : Fragment() {
             val fragment = ThirdFragment()
             issue?.let {
                 val args = Bundle()
-                args.putString(ArticleContent.HEADER_KEY, issue!!.header)
+                args.putString(ArticleContent.HEADER_KEY, issue.header)
                 args.putString(ArticleContent.DESCRIPTION_KEY, issue.description)
                 args.putInt(ArticleContent.IMAGE_ID_KEY, issue.image)
                 fragment.arguments = args

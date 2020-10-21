@@ -52,6 +52,6 @@ class SecondFragment : Fragment() {
             .setDescription(article.description)
             .setOnClickListener(null)
             .build()
-            .show(fragmentManager!!,"sss")
+            .show(fragmentManager!!,null)
     }
 }

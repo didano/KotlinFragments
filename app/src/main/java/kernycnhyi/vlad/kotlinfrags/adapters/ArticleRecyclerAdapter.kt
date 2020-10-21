@@ -12,7 +12,7 @@ import kernycnhyi.vlad.kotlinfrags.model.BaseArticleModel
 import kotlinx.android.synthetic.main.list_item_main.view.*
 import kotlinx.android.synthetic.main.list_item_secondary.view.*
 
-class ArticleRecyclerAdapter(var onClick:(model:BaseArticleModel)->Unit = {} ) :
+class ArticleRecyclerAdapter(private var onClick:(model:BaseArticleModel)->Unit = {} ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var articleList: List<BaseArticleModel>
