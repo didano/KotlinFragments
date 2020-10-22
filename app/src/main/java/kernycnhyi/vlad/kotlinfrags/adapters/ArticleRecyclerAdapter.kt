@@ -12,7 +12,7 @@ import kernycnhyi.vlad.kotlinfrags.model.BaseArticleModel
 import kotlinx.android.synthetic.main.list_item_main.view.*
 import kotlinx.android.synthetic.main.list_item_secondary.view.*
 
-class ArticleRecyclerAdapter() :
+class ArticleRecyclerAdapter(private var onClick:(model:BaseArticleModel)->Unit = {} ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private lateinit var articleList: List<BaseArticleModel>
@@ -39,6 +39,9 @@ class ArticleRecyclerAdapter() :
                     itemMainHeaderText.text = articleElement.header
                     itemMainDescText.text = articleElement.description
                     itemMainImageView.setImageResource(articleElement.image)
+                    itemView.setOnClickListener {
+                        onClick.invoke(articleElement)
+                    }
                 }
             }
             ArticleContent.VIEWTYPE_SECONDARY -> {
@@ -47,6 +50,9 @@ class ArticleRecyclerAdapter() :
                     itemSecHeaderText.text = issueElement.header
                     itemSecDescText.text = issueElement.description
                     itemSecImageView.setImageResource(issueElement.image)
+                    itemView.setOnClickListener {
+                        onClick.invoke(issueElement)
+                    }
                 }
             }
         }

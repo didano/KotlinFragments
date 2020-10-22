@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import kernycnhyi.vlad.kotlinfrags.fragments.FirstFragment
 import kernycnhyi.vlad.kotlinfrags.fragments.SecondFragment
 import kernycnhyi.vlad.kotlinfrags.fragments.ThirdFragment
+import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
 
 class Router(private val fragmentManager: FragmentManager, private val containerId: Int) {
 
@@ -17,11 +18,11 @@ class Router(private val fragmentManager: FragmentManager, private val container
         openFragment(SecondFragment(), addToBackStack)
     }
 
-    fun openThirdFrag(addToBackStack: Boolean = true) {
-        openFragment(ThirdFragment(), addToBackStack)
+    fun openThirdFrag(issue: ArticleContent.Issue, addToBackStack: Boolean = true) {
+            openFragment(ThirdFragment.newInstance(issue), addToBackStack)
     }
 
-    fun openFragment(fragment: Fragment, addToBackStack: Boolean) {
+    private fun openFragment(fragment: Fragment, addToBackStack: Boolean) {
         if (addToBackStack) {
             fragmentManager.beginTransaction().replace(containerId, fragment)
                 .addToBackStack(null)

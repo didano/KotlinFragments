@@ -11,4 +11,6 @@
     <string name="hello_third_fragment">Hello from third fragment</string>
     <string name="mock_description_text">DESCRIPTION</string>
     <string name="mock_header_text">Article Header</string>
+    <string name="some_news">Some news</string>
+    <string name="news_header">Breaking News</string>
 </resources>

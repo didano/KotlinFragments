@@ -11,4 +11,8 @@
     <dimen name="basic_cardview_corner_radius">8dp</dimen>
     <dimen name="issue_header_text_size">20sp</dimen>
     <dimen name="secondary_image_side">70dp</dimen>
+    <dimen name="dialog_header_text_size">20sp</dimen>
+    <dimen name="small_top_margin">10dp</dimen>
+    <dimen name="mobile_dialog_basic_width">250dp</dimen>
+    <dimen name="dialog_padding">50dp</dimen>
 </resources>
