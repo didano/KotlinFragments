@@ -11,6 +11,7 @@ import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.adapters.ArticleRecyclerAdapter
 import kernycnhyi.vlad.kotlinfrags.interfaces.NavigationInterface
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
+import kernycnhyi.vlad.kotlinfrags.utils.inflateExt
 import kotlinx.android.synthetic.main.fragment_second.*
 
 class SecondFragment : Fragment() {
@@ -29,7 +30,7 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_second, container, false)
+    ): View? = container?.inflateExt(R.layout.fragment_second)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

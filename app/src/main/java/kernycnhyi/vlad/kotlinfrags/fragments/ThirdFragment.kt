@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
+import kernycnhyi.vlad.kotlinfrags.utils.inflateExt
 import kotlinx.android.synthetic.main.fragment_third.*
 
 class ThirdFragment private constructor() : Fragment() {
@@ -15,7 +16,7 @@ class ThirdFragment private constructor() : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_third, container, false)
+    ): View? = container?.inflateExt(R.layout.fragment_third)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +36,7 @@ class ThirdFragment private constructor() : Fragment() {
         fun newInstance(
             issue: ArticleContent.Issue
         ): Fragment = ThirdFragment().apply {
-            this.arguments = Bundle().apply {
+            arguments = Bundle().apply {
                 putString(HEADER_KEY, issue.header)
                 putString(DESCRIPTION_KEY, issue.description)
                 putInt(IMAGE_ID_KEY, issue.image)

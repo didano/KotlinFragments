@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import kernycnhyi.vlad.kotlinfrags.R
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
+import kernycnhyi.vlad.kotlinfrags.utils.toastDialogText
 import kotlinx.android.synthetic.main.dialog_one_layout.*
 
 class DialogOne private constructor() : DialogFragment() {
@@ -24,13 +24,13 @@ class DialogOne private constructor() : DialogFragment() {
             mainDialogHeadTextView.apply {
                 text = it.getString(DIALOG_TITLE_KEY)
                 setOnClickListener {
-                    Toast.makeText(activity, TOAST_TITLE_TEXT, Toast.LENGTH_SHORT).show()
+                    context.toastDialogText(text.toString())
                 }
             }
             mainDialogDescTextView.apply {
                 text = it.getString(DIALOG_DESCRIPTION_KEY)
                 setOnClickListener {
-                    Toast.makeText(activity, TOAST_DESCRIPTION_TEXT, Toast.LENGTH_SHORT).show()
+                    context.toastDialogText(text.toString())
                 }
             }
         }
@@ -39,8 +39,6 @@ class DialogOne private constructor() : DialogFragment() {
     companion object Builder {
         const val DIALOG_TITLE_KEY = "dialogTitle"
         const val DIALOG_DESCRIPTION_KEY = "dialogDesc"
-        const val TOAST_DESCRIPTION_TEXT = "Some Toast Text From Description"
-        const val TOAST_TITLE_TEXT = "SomeToastText"
         var title: String = ArticleContent.MOCK_HEADER
         var description: String = ArticleContent.MOCK_DESCRIPTION
 
@@ -48,7 +46,7 @@ class DialogOne private constructor() : DialogFragment() {
             title: String,
             description: String
         ): DialogOne = DialogOne().apply {
-            this.arguments = Bundle().apply {
+            arguments = Bundle().apply {
                 putString(DIALOG_TITLE_KEY, title)
                 putString(DIALOG_DESCRIPTION_KEY, description)
             }
