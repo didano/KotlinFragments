@@ -13,4 +13,5 @@
     <string name="mock_header_text">Article Header</string>
     <string name="some_news">Some news</string>
     <string name="news_header">Breaking News</string>
+    <string name="custom_view_title">Title of Custom View</string>
 </resources>

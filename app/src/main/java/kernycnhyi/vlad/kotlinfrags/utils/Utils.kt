@@ -12,3 +12,4 @@ fun ViewGroup.inflateExt(layoutResource: Int): View =
 
 fun Context.toastDialogText(str: String?) =
     Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+

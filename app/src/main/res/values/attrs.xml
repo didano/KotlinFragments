@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyCustomView">
+        
+        <attr name="mcv_title" format="string"/>
+        <attr name="mcv_progress_bar_color" format="color"/>
+
+    </declare-styleable>
+</resources>
