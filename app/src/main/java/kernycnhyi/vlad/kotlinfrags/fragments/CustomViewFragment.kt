@@ -12,7 +12,7 @@ import kernycnhyi.vlad.kotlinfrags.utils.SimpleTextWatcher
 import kernycnhyi.vlad.kotlinfrags.utils.inflateExt
 import kotlinx.android.synthetic.main.fragment_first.*
 
-class FirstFragment : Fragment() {
+class CustomViewFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +24,7 @@ class FirstFragment : Fragment() {
         changeTitleEditText.addTextChangedListener(SimpleTextWatcher {
             (activity as? UpdateToolbarTitle)?.updateTitle(it.toString())
         })
-
-
+        customCardView.setProgress(30)
         firstBtnNext.setOnClickListener {
             (activity as? NavigationInterface)?.openSecondFragment()
         }

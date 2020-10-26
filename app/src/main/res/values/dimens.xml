@@ -15,4 +15,7 @@
     <dimen name="small_top_margin">10dp</dimen>
     <dimen name="mobile_dialog_basic_width">250dp</dimen>
     <dimen name="dialog_padding">50dp</dimen>
+    <dimen name="padding_custom_view">15dp</dimen>
+    <dimen name="big_shape_radius">7dp</dimen>
+    <item name="small_shape_radius" type="dimen">1dp</item>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FirstFragment">
+    tools:context=".fragments.CustomViewFragment">
 
     <TextView
         android:id="@+id/firstFragTV"
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_secondary_bottom_margin"
         android:text="@string/next"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -36,8 +37,21 @@
         android:hint="@string/change_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/firstFragTV"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
+        android:id="@+id/customCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeTitleEditText"
+        app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
+        app:mcv_title="@string/custom_view_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
