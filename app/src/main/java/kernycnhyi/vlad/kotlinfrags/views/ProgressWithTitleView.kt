@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import kernycnhyi.vlad.kotlinfrags.R
 import kotlinx.android.synthetic.main.custom_layout.view.*
 
-class MyCustomView @JvmOverloads constructor(
+class ProgressWithTitleView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -39,13 +39,15 @@ class MyCustomView @JvmOverloads constructor(
         View.inflate(getContext(), R.layout.custom_layout, this)
         with(
             context.obtainStyledAttributes(
-                attributeSet, R.styleable.MyCustomView,
+                attributeSet, R.styleable.ProgressWithTitleView,
                 0, 0
             )
         ) {
-            progressValue = this.getInt(R.styleable.MyCustomView_mcv_progress_value, PROGRESS_VALUE)
-            progressColor = this.getColorStateList(R.styleable.MyCustomView_mcv_progress_bar_color)
-            title = this.getString(R.styleable.MyCustomView_mcv_title)
+            progressValue =
+                this.getInt(R.styleable.ProgressWithTitleView_mcv_progress_value, PROGRESS_VALUE)
+            progressColor =
+                this.getColorStateList(R.styleable.ProgressWithTitleView_mcv_progress_bar_color)
+            title = this.getString(R.styleable.ProgressWithTitleView_mcv_title)
             recycle()
         }
     }

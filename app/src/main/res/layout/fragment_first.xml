@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstFragTV"
         app:layout_constraintVertical_bias="0.15" />
 
-    <kernycnhyi.vlad.kotlinfrags.views.MyCustomView
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
         android:id="@+id/customCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
