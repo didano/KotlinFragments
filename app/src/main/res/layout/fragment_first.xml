@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FirstFragment">
+    tools:context=".fragments.CustomViewFragment">
 
     <TextView
         android:id="@+id/firstFragTV"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeTitleEditText"
         app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
         app:mcv_title="@string/custom_view_title" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

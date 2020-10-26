@@ -2,7 +2,7 @@ package kernycnhyi.vlad.kotlinfrags.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import kernycnhyi.vlad.kotlinfrags.fragments.FirstFragment
+import kernycnhyi.vlad.kotlinfrags.fragments.CustomViewFragment
 import kernycnhyi.vlad.kotlinfrags.fragments.SecondFragment
 import kernycnhyi.vlad.kotlinfrags.fragments.ThirdFragment
 import kernycnhyi.vlad.kotlinfrags.model.ArticleContent
@@ -11,7 +11,7 @@ class Router(private val fragmentManager: FragmentManager, private val container
 
 
     fun openFirstFrag(addToBackStack: Boolean = true) {
-        openFragment(FirstFragment(), addToBackStack)
+        openFragment(CustomViewFragment(), addToBackStack)
     }
 
     fun openSecondFrag(addToBackStack: Boolean = true) {

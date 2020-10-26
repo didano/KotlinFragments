@@ -9,7 +9,5 @@ import android.widget.Toast
 fun ViewGroup.inflateExt(layoutResource: Int): View =
     LayoutInflater.from(context).inflate(layoutResource, this, false)
 
-
 fun Context.toastDialogText(str: String?) =
     Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-
