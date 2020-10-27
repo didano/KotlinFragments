@@ -8,7 +8,7 @@ class ProgressIntentService : IntentService("ProgressIntentService") {
 
     override fun onHandleIntent(intent: Intent?) {
         for (progress in 0 until 101) {
-            Thread.sleep(100)
+            Thread.sleep(SLEEP_VALUE)
             sendBroadcast(
                 Intent(INTENT_SERVICE_ACTION).putExtra(
                     KEY_INTSERVICE_PROGRESS_VALUE,
@@ -24,5 +24,6 @@ class ProgressIntentService : IntentService("ProgressIntentService") {
         const val INTENT_SERVICE_ACTION =
             "kernycnhyi.vlad.kotlinfrags.fragments.BROADCAST_PROGRESS_INTENTSERVICE"
         const val KEY_INTSERVICE_PROGRESS_VALUE = "progressIntentValue"
+        const val SLEEP_VALUE: Long = 1000
     }
 }

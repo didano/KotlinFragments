@@ -14,7 +14,7 @@ class ProgressService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Thread() {
             for (progress in 0 until 101) {
-                Thread.sleep(100)
+                Thread.sleep(SLEEP_VALUE)
                 sendBroadcast(
                     Intent(SIMPLE_SERVICE_ACTION).putExtra(
                         KEY_PROGRESS_VALUE,
@@ -30,5 +30,6 @@ class ProgressService : Service() {
     companion object {
         const val SIMPLE_SERVICE_ACTION = "kernycnhyi.vlad.kotlinfrags.fragments.BROADCAST_PROGRESS"
         const val KEY_PROGRESS_VALUE = "progressValue"
+        const val SLEEP_VALUE: Long = 1000
     }
 }
