@@ -6,17 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CustomViewFragment">
 
-    <TextView
-        android:id="@+id/firstFragTV"
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
+        android:id="@+id/customCardViewCouroutines"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/big_top_margin"
-        android:text="@string/hello_first_fragment"
-        android:textSize="@dimen/basic_header_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/customCardViewLoader"
+        app:layout_constraintVertical_bias="0.1"
+        app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
+        app:mcv_title="@string/couroutines_view_title" />
+
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
+        android:id="@+id/customCardViewLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customCardViewIntentService"
+        app:layout_constraintVertical_bias="0.1"
+        app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
+        app:mcv_title="@string/loader_view_title" />
+
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
+        android:id="@+id/customCardViewIntentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customCardViewService"
+        app:layout_constraintVertical_bias="0.1"
+        app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
+        app:mcv_title="@string/intent_service_view_title" />
+
+    <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
+        android:id="@+id/customCardViewService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customCardView"
+        app:layout_constraintVertical_bias="0.1"
+        app:mcv_progress_bar_color="@android:color/holo_orange_dark"
+        app:mcv_progress_value="70"
+        app:mcv_title="@string/service_view_title" />
 
     <Button
         android:id="@+id/firstBtnNext"
@@ -37,10 +81,10 @@
         android:hint="@string/change_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstFragTV"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
     <kernycnhyi.vlad.kotlinfrags.views.ProgressWithTitleView
         android:id="@+id/customCardView"
@@ -50,8 +94,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeTitleEditText"
+        app:layout_constraintVertical_bias="0.041"
         app:mcv_progress_bar_color="@android:color/holo_orange_dark"
         app:mcv_progress_value="70"
-        app:mcv_title="@string/custom_view_title" />
+        app:mcv_title="@string/handler_thread_view_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".base.BasicActivity"></activity>
+        <service
+            android:name=".services.ProgressIntentService"
+            android:exported="false"></service>
+        <service
+            android:name=".services.ProgressService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".base.BasicActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

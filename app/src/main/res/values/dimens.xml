@@ -17,5 +17,6 @@
     <dimen name="dialog_padding">50dp</dimen>
     <dimen name="padding_custom_view">15dp</dimen>
     <dimen name="big_shape_radius">7dp</dimen>
+    <dimen name="custom_view_width">200dp</dimen>
     <item name="small_shape_radius" type="dimen">1dp</item>
 </resources>

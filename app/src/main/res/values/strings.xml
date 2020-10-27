@@ -14,4 +14,9 @@
     <string name="some_news">Some news</string>
     <string name="news_header">Breaking News</string>
     <string name="custom_view_title">Title of Custom View</string>
+    <string name="couroutines_view_title">Couroutines</string>
+    <string name="loader_view_title">Loader</string>
+    <string name="intent_service_view_title">Intent Service</string>
+    <string name="service_view_title">Service</string>
+    <string name="handler_thread_view_title">HandlerThread</string>
 </resources>
